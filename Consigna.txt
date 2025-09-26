@@ -1,37 +1,37 @@
-Tu tarea es recrear el smart contract KipuBank con toda su funcionalidad y documentaci髇, como se describe a continuaci髇.
+Tu tarea es recrear el smart contract KipuBank con toda su funcionalidad y documentaci贸n, como se describe a continuaci锟絥.
 
-Caracter韘ticas de KipuBank:
+Caracter铆sticas de KipuBank:
 
-Los usuarios pueden depositar tokens nativos (ETH) en una b髒eda personal.
+Los usuarios pueden depositar tokens nativos (ETH) en una b贸veda personal.
 
-Los usuarios pueden retirar fondos de su b髒eda, pero solo hasta un umbral fijo por transacci髇, representado por una variable immutable.
+Los usuarios pueden retirar fondos de su b贸veda, pero solo hasta un umbral fijo por transacci贸n, representado por una variable immutable.
 
-El contrato impone un l韒ite global de dep髎itos (bankCap), definido durante el despliegue.
+El contrato impone un l铆mite global de dep贸sitos (bankCap), definido durante el despliegue.
 
-Las interacciones internas y externas deben seguir buenas pr醕ticas de seguridad y declaraciones revert con errores personalizados si no se cumplen las condiciones.
+Las interacciones internas y externas deben seguir buenas pr谩cticas de seguridad y declaraciones revert con errores personalizados si no se cumplen las condiciones.
 
-Se deben emitir eventos tanto en dep髎itos como en retiros exitosos.
+Se deben emitir eventos tanto en dep贸sitos como en retiros exitosos.
 
-El contrato debe llevar registro del n鷐ero de dep髎itos y retiros.
+El contrato debe llevar registro del n煤mero de dep贸sitos y retiros.
 
-El contrato debe tener al menos una funci髇 external, una private y una view.
+El contrato debe tener al menos una funci贸n external, una private y una view.
 
 
 ///////////////////////////////////////////////////////
 
-Pr醕ticas de seguridad a seguir:
+Pr谩cticas de seguridad a seguir:
 
 Usar errores personalizados en lugar de cadenas en require.
 
-Respetar el patr髇 checks-effects-interactions y las convenciones de nombres.
+Respetar el patr贸n checks-effects-interactions y las convenciones de nombres.
 
-Usar modificadores donde corresponda para validar la l骻ica.
+Usar modificadores donde corresponda para validar la l贸gica.
 
 Manejar transferencias nativas de manera segura.
 
 Mantener las variables de estado limpias, legibles y bien comentadas.
 
-Agregar comentarios NatSpec para cada funci髇, error y variable de estado.
+Agregar comentarios NatSpec para cada funci贸n, error y variable de estado.
 
 Aplicar convenciones de nombres adecuadas.
 
