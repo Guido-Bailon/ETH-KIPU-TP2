@@ -12,9 +12,9 @@ contract KipuBank{
     ///@notice variable utilizada para almacenar la boveda de cada usuario
     mapping(address user => uint256 vault) private s_vaults;
     ///@notice variable que almacena la cantidad total de depositos
-    uint256 private s_deposits;
+    uint128 private s_deposits;
     ///@notice variable que almacena la cantidad total de retiros
-    uint256 private s_withdrawals;
+    uint128 private s_withdrawals;
 
     
     /*///////////////////////
