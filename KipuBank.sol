@@ -34,6 +34,8 @@ contract KipuBank{
     error KipuBank_unsuficentFunds(address caller);
     ///@notice error emitido cuando un usuario quiere retirar mas fondos de lo permitido por el banco
     error KipuBank_withdrawalCapped(address caller);
+    ///@notice error emitido un retiro falla
+    error KipuBank_withdrawalFailed(address caller);
     
     /*///////////////////////
 					Functions
@@ -48,12 +50,35 @@ contract KipuBank{
 
     function deposit() external payable {
         if (msg.value + s_vaults[msg.sender] > MAX_VAULT) revert KipuBank_bankCapped(msg.sender);
-        s_vaults[msg.sender] +=  msg.value;
+        _updateVault(msg.sender, s_vaults[msg.sender] + msg.value);
         s_deposits += 1;
         emit KipuBank_deposit(msg.sender,msg.value);
     }
 
     function withdrawal(uint256 quant) external{
+        if (quant > s_vaults[msg.sender]) revert KipuBank_unsuficentFunds(msg.sender);
+        if (quant > i_maxWithdrawal) revert KipuBank_withdrawalCapped(msg.sender);
+        _updateVault(msg.sender, s_vaults[msg.sender] - quant);
+        s_withdrawals += 1;
+        address payable recipient = payable(msg.sender);
+        (bool success, ) = recipient.call{value: quant}("");
+        if (!success) revert KipuBank_withdrawalFailed(msg.sender);
+        emit KipuBank_withdrawal(msg.sender, quant);
+    }
 
+    function _updateVault(address user, uint256 newBalance) private {
+        s_vaults[user] = newBalance;
+    }
+
+    function viewWithdrawals() external view returns(uint256){
+        return s_withdrawals;
+    }
+
+    function viewDeposits() external view returns(uint256){
+        return s_deposits;
+    }
+
+    function viewVault() external view returns(uint256){
+        return s_vaults[msg.sender];
     }
 }
