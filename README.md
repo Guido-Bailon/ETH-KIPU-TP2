@@ -18,7 +18,7 @@ También es posible observar la cantidad de depósitos y retiros históricos que
 ## Guía de usuario
 
 Una vez desplegado, el usuario ya puede interactuar libremente con el contrato, teniendo una variedad de opciones para ello:<br>
-Para **depositar** es tan simple como enviar la cantidad a depositar al contrato en una transacción, teniendo en cuenta que el la boveda del usuario solo puede almacenar hasta 10000ETH.<br>
-Para **retirar** es primero necesario indicar la cantidad necesaria a retirar, teniendo en cuenta que no puede ser mayor al valor establecido en **maxWithdrawal** y no es posible retirar más fondos de los que posee el usuario en su boveda.<br>
-El usuario también puede consultar la cantidad de depositos y retiros que se hicieron al banco en su totalidad, mediante las funciones view **viewDeposits** y **viewWithdrawals**<br>
-El usuario también es capaz de consultar cuánto ETH tiene en su bóveda mediante la función view **viewVault**
+* Para **depositar** es tan simple como enviar la cantidad a depositar al contrato en una transacción, teniendo en cuenta que el la boveda del usuario solo puede almacenar hasta 10000ETH.<br>
+* Para **retirar** es primero necesario indicar la cantidad necesaria a retirar, teniendo en cuenta que no puede ser mayor al valor establecido en **maxWithdrawal** y no es posible retirar más fondos de los que posee el usuario en su boveda.<br>
+* El usuario también puede consultar la cantidad de depositos y retiros que se hicieron al banco en su totalidad, mediante las funciones view **viewDeposits** y **viewWithdrawals**<br>
+* El usuario también es capaz de consultar cuánto ETH tiene en su bóveda mediante la función view **viewVault**
