@@ -9,8 +9,7 @@ También es posible observar la cantidad de depósitos y retiros históricos que
 1. Descargar el contracto de este repositorio.
 2. Ir a Remix, un IDE para desarrollo de aplicaciones en la blockchain Ethereum: https://remix.ethereum.org/
 3. Subir el contrato Remix, o pegarlo.
-4. Compilar el contrato.
- 4.b. Asociar tu cuenta de Metamask con Remix en caso de no haberlo heccho previamente.
+4. Compilar el contrato. Asociar tu cuenta de Metamask con Remix en caso de no haberlo heccho previamente.
 5. Ir a la pestaña de "Deploy & Run transactions"
 6. Elige tu cuenta de Metamask, en la red de Sepolia.
 7. Establecer el valor de **maxWithdrawal** y seleccionar "Deploy"
