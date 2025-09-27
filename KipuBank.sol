@@ -48,6 +48,13 @@ contract KipuBank{
     receive() external payable {}
     fallback() external payable{}
 
+    /*
+    @notice funcion que permite a un usuario depositar en su boveda
+    @dev la funcion actualiza la boveda del usuario
+    @dev la funcion actualiza el contador de depositos
+    @dev la funcion emite un evento de deposito
+    @dev la funcion revierte si el deposito hace que el usuario supere el maximo de su boveda
+    */
     function deposit() external payable {
         if (msg.value + s_vaults[msg.sender] > MAX_VAULT) revert KipuBank_bankCapped(msg.sender);
         _updateVault(msg.sender, s_vaults[msg.sender] + msg.value);
@@ -55,6 +62,15 @@ contract KipuBank{
         emit KipuBank_deposit(msg.sender,msg.value);
     }
 
+    /*
+    @notice funcion que permite a un usuario retirar de su boveda
+    @dev la funcion actualiza la boveda del usuario
+    @dev la funcion actualiza el contador de retiros
+    @dev la funcion emite un evento de retiro
+    @dev la funcion revierte si el usuario quiere retirar mas fondos de los que posee
+    @dev la funcion revierte si el usuario quiere retirar mas fondos de lo permitido por el banco
+    @dev la funcion revierte si la transferencia de fondos falla
+    */
     function withdrawal(uint256 quant) external{
         if (quant > s_vaults[msg.sender]) revert KipuBank_unsuficentFunds(msg.sender);
         if (quant > i_maxWithdrawal) revert KipuBank_withdrawalCapped(msg.sender);
@@ -66,18 +82,33 @@ contract KipuBank{
         emit KipuBank_withdrawal(msg.sender, quant);
     }
 
+    /*
+    @notice funcion privada que actualiza la boveda de un usuario a un nuevo valor
+    */
     function _updateVault(address user, uint256 newBalance) private {
         s_vaults[user] = newBalance;
     }
 
+    /*
+    @notice funcion que permite a un usuario ver la cantidad total de retiros realizados
+    @return uint256 cantidad total de retiros realizados
+    */
     function viewWithdrawals() external view returns(uint256){
         return s_withdrawals;
     }
 
+    /*
+    @notice funcion que permite a un usuario ver la cantidad total de depositos realizados
+    @return uint256 cantidad total de depositos realizados
+    */
     function viewDeposits() external view returns(uint256){
         return s_deposits;
     }
 
+    /*
+    @notice funcion que permite a un usuario ver el saldo actual de su boveda
+    @return uint256 saldo actual de la boveda del usuario
+    */
     function viewVault() external view returns(uint256){
         return s_vaults[msg.sender];
     }
